@@ -43,18 +43,26 @@ const formSchema = z.object({
     .min(1, "Position is required")
     .max(100, "Position must be 100 characters or less"),
   description: z.string().min(10, "Description is required"),
-  experience: z.coerce
-    .number()
-    .min(0, "Experience cannot be empty or negative"),
+  experience: z.coerce.number().min(0, "Experience cannot be empty or negative"),
   techStack: z.string().min(1, "Tech stack must be at least a character"),
 });
 
-type FormData = z.infer<typeof formSchema>;
+type InterviewFormData = {
+  position: string;
+  description: string;
+  experience: number;
+  techStack: string;
+};
 
 export const FormMockInterview = ({ initialData }: FormMockInterviewProps) => {
-  const form = useForm<FormData>({
-    resolver: zodResolver(formSchema),
-    defaultValues: initialData || {},
+  const form = useForm<InterviewFormData>({
+    resolver: zodResolver(formSchema) as any,
+    defaultValues: initialData || {
+      position: "",
+      description: "",
+      experience: 0,
+      techStack: "",
+    },
   });
 
   const { isValid, isSubmitting } = form.formState;
@@ -95,7 +103,7 @@ export const FormMockInterview = ({ initialData }: FormMockInterviewProps) => {
     }
   };
 
-  const generateAiResponse = async (data: FormData) => {
+  const generateAiResponse = async (data: InterviewFormData) => {
     const prompt = `
         As an experienced prompt engineer, generate a JSON array containing 5 technical interview questions along with detailed answers based on the following job information. Each object in the array should have the fields "question" and "answer", formatted as follows:
 
@@ -119,7 +127,7 @@ export const FormMockInterview = ({ initialData }: FormMockInterviewProps) => {
     return cleanedResponse;
   };
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: InterviewFormData) => {
     try {
       setLoading(true);
 
