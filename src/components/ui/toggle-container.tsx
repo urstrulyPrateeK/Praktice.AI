@@ -35,7 +35,7 @@ export const ToggleContainer = () => {
                 )
               }
             >
-              Take An Interview
+              Virtual Interview Room
             </NavLink>
           )}
         </nav>

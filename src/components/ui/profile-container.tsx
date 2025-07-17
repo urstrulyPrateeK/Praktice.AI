@@ -17,7 +17,16 @@ export const ProfileContainer = () => {
   return (
     <div className="flex items-center gap-6">
       {isSignedIn ? (
-        <UserButton afterSignOutUrl="/" />
+        <UserButton 
+          afterSignOutUrl="/" 
+          appearance={{
+            elements: {
+              avatarBox: "w-12 h-12",
+              userButtonPopoverCard: "shadow-lg",
+              userButtonPopoverActionButton: "hover:bg-gray-100"
+            }
+          }}
+        />
       ) : (
         <Link to={"/signin"}>
           <Button size={"sm"}>Get Started</Button>
