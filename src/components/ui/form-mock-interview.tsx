@@ -55,8 +55,8 @@ type InterviewFormData = {
 };
 
 export const FormMockInterview = ({ initialData }: FormMockInterviewProps) => {
-  const form = useForm<InterviewFormData>({
-    resolver: zodResolver(formSchema) as any,
+  const form = useForm({
+    resolver: zodResolver(formSchema),
     defaultValues: initialData || {
       position: "",
       description: "",
@@ -267,7 +267,8 @@ export const FormMockInterview = ({ initialData }: FormMockInterviewProps) => {
                     disabled={loading}
                     placeholder="eg:- 5 Years"
                     {...field}
-                    value={field.value || ""}
+                    value={field.value?.toString() || ""}
+                    onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                   />
                 </FormControl>
               </FormItem>
