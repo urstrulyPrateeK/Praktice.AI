@@ -342,6 +342,6 @@ MIT License - Feel free to use this project for personal and commercial purposes
   
   **🚀 [Try it live](https://prakticeai.vercel.app/) | ⭐ [Star on GitHub](https://github.com/urstrulyPrateeK/Praktice.AI) | 🔄 [Share with friends](https://prakticeai.vercel.app/)**
   
-  *Made with ❤️ and ☕ by [Prateek Singh](https://github.com/urstrulyPrateeK)*
+  *Made with ❤️ and ☕ by [Prateek Singh](https://www.linkedin.com/in/urstrulyprateeksingh/)*
   
 </div>
